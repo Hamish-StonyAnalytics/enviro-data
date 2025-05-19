@@ -66,21 +66,22 @@ def crop_image():
     df_swell_data = df_swell_data.drop_duplicates() #need to remove recorded_dt to work
     df_swell_data.to_csv('df_swell_data.csv', index_label=False)    
     
-    
-    return(df_text_triaxys)
+    return(df_swell_data)
 
 def swell_parameters():
     df_swell = crop_image()
-    s_peak_period = df_swell['text'][0]
-    s_mean_period = df_swell['text'][1]
-    s_max_height = df_swell['text'][2]
-    s_highest_10th = df_swell['text'][3]
-    s_sig_height = df_swell['text'][4]
-    print(f"s_peak_period {s_peak_period}")
-    print(f"s_mean_period {s_mean_period}")
-    print(f"s_max_height {s_max_height}")
-    print(f"s_highest_10th {s_highest_10th}")
-    print(f"s_sig_height {s_sig_height}")
-    df_swell.to_csv('df_swell.csv', index_label=False)
+    df_swell = df_swell.tail(6)
+    s_peak_period = df_swell['value'].iloc[0]
+    s_mean_period = df_swell['value'].iloc[1]
+    s_max_height = df_swell['value'].iloc[2]
+    s_highest_10th = df_swell['value'].iloc[3]
+    s_sig_height = df_swell['value'].iloc[4]
+    s_swell_dir = df_swell['value'].iloc[5]
+    print(f"Peak Period {s_peak_period}")
+    print(f"Mean Period {s_mean_period}")
+    print(f"Max Height {s_max_height}")
+    print(f"Highest 10th {s_highest_10th}")
+    print(f"Sig Height {s_sig_height}")
+    print(f"Swell Direction {s_swell_dir}")
 
 swell_parameters()
