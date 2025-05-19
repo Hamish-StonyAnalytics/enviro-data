@@ -3,5 +3,5 @@ __pychache__/
 .ipynb_checkpoints/
 *.pyc
 workings/
-data/
+working_data/
 
